@@ -8,7 +8,7 @@ import {
   DB_DIALECT
 } from '../configs/app';
 
-export const sequelize = new Sequelize(
+export const conn = new Sequelize(
   DB_NAME, DB_USER, DB_PASS, {
     host: DB_HOST,
     port: DB_PORT,
@@ -18,7 +18,7 @@ export const sequelize = new Sequelize(
 const models = {};
 
 if (process.env.DB_SYNC == 1) {
-  sequelize.sync({ force: true });
+  conn.sync({ force: true });
 }
 
 export default models;
