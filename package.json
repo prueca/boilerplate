@@ -1,7 +1,7 @@
 {
-  "name": "almon",
+  "name": "boilerplate",
   "version": "1.0.0",
-  "description": "Inventory system for Almon Cakes and Pastries",
+  "description": "Setup boilerplate for project",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --ignore ./src/public --exec babel-node ./src/server.js",
@@ -26,7 +26,8 @@
     "mysql2": "^1.7.0",
     "node-sass-middleware": "^0.11.0",
     "pug": "^2.0.4",
-    "sequelize": "^5.19.6"
+    "sequelize": "^5.19.6",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
