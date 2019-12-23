@@ -9,8 +9,12 @@ export default (server) => {
 
     evtList.forEach((evtName) => {
       socket.on(evtName, (data) => {
-        const evtHandler = events[evtName];
-        evtHandler(socket, data, io);
+        try {
+          const evtHandler = events[evtName];
+          evtHandler(socket, data, io);
+        } catch (err) {
+          socket.emit('ERR_HANDLER', { error: err.message });
+        }
       });
     });
   });

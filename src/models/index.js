@@ -17,6 +17,10 @@ export const conn = new Sequelize(
 
 const models = {};
 
+Object.values(models)
+  .filter(model => typeof model.associate === 'function')
+  .forEach(model => model.associate(models));
+
 if (process.env.DB_SYNC == 1) {
   conn.sync({ force: true });
 }
