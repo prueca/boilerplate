@@ -8,6 +8,8 @@ import {
   DB_DIALECT
 } from '../configs/app';
 
+import schema from './schema';
+
 export const conn = new Sequelize(
   DB_NAME, DB_USER, DB_PASS, {
     host: DB_HOST,
