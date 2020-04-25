@@ -8,7 +8,7 @@ import cors from 'cors';
 import 'dotenv/config';
 
 import io from './io';
-import corsConfig = './configs/cors';
+import corsConfig from './configs/cors';
 import indexRouter from './routes/index';
 
 const app = express();

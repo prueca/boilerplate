@@ -10,5 +10,5 @@ export const
   DB_PASS = env('DB_PASS', ''),
   DB_HOST = env('DB_HOST', 'localhost'),
   DB_PORT = env('DB_PORT', 3306),
-  DB_DIALECT = env('DB_DIALECT', 'mysql')
+  DB_DIALECT = env('DB_DIALECT', 'mysql'),
   MAILER_CONFIG = smtp[env('SMTP', 'ethereal')];
