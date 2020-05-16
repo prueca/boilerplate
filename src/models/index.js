@@ -1,30 +1,27 @@
 import Sequelize from 'sequelize';
-import {
-  DB_NAME,
-  DB_USER,
-  DB_PASS,
-  DB_HOST,
-  DB_PORT,
-  DB_DIALECT
-} from '../configs/app';
-
+import config, { FORCE_SYNC } from '../configs/database';
 import schema from './schema';
 
 export const conn = new Sequelize(
-  DB_NAME, DB_USER, DB_PASS, {
-    host: DB_HOST,
-    port: DB_PORT,
-    dialect: DB_DIALECT
-  });
+  config.DB_NAME,
+  config.DB_USER,
+  config.DB_PASS,
+  {
+    host: config.DB_HOST,
+    port: config.DB_PORT,
+    dialect: config.DB_DIALECT
+  }
+);
 
-const models = {};
+const models = {
+  // initialize models here
+};
 
 Object.values(models)
   .filter(model => typeof model.associate === 'function')
   .forEach(model => model.associate(models));
 
-if (process.env.DB_SYNC == 1) {
-  conn.sync({ force: true });
-}
+Object.values(models)
+  .forEach(model => model.sync({ force: FORCE_SYNC }));
 
 export default models;

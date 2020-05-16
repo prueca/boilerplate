@@ -7,6 +7,7 @@ export default class BaseModel extends Model {
    * with attributes and options.
    *
    * @param {Object} conn
+   * @param {Object} schema
    */
   static init(conn, schema) {
     return super.init(schema.attr, { ...schema.opt, sequelize: conn });

@@ -1,4 +1,6 @@
-export default {
+import { env } from "../library/helper";
+
+const config = {
   ethereal: {
     host: 'smtp.ethereal.email',
     port: 587,
@@ -21,3 +23,5 @@ export default {
     },
   },
 };
+
+export default config[env('SMTP', 'ethereal')];
