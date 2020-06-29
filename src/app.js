@@ -32,10 +32,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors(corsConfig));
 app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
+  src: path.join(__dirname, 'sass'),
+  dest: path.join(__dirname, 'public/css'),
   indentedSyntax: true, // true = .sass and false = .scss
   outputStyle: 'expanded', // compressed, nested, compact
+  prefix: '/css',
   debug: false,
 }));
 app.use(express.static(path.join(__dirname, 'public')));
