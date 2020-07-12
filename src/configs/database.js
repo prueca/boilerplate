@@ -1,4 +1,4 @@
-import { env } from '../library/helper';
+import { env } from '../helper';
 
 export const FORCE_SYNC = false;
 

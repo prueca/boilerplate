@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import MAILER_CONFIG from '../configs/smtp';
 
 /**
  * Returns env variable
