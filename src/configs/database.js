@@ -1,6 +1,6 @@
-import { env } from '../helper';
+import { env } from '../helper'
 
-export const FORCE_SYNC = false;
+export const FORCE_SYNC = false
 
 export default {
   DB_NAME: env('DB_NAME', 'POS'),
@@ -9,4 +9,4 @@ export default {
   DB_HOST: env('DB_HOST', 'localhost'),
   DB_PORT: env('DB_PORT', 3306),
   DB_DIALECT: env('DB_DIALECT', 'mysql')
-};
+}

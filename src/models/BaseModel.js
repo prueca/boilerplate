@@ -1,4 +1,4 @@
-import { Model } from 'sequelize';
+import { Model } from 'sequelize'
 
 export default class BaseModel extends Model {
   /**
@@ -10,6 +10,6 @@ export default class BaseModel extends Model {
    * @param {Object} schema
    */
   static init(conn, schema) {
-    return super.init(schema.attr, { ...schema.opt, sequelize: conn });
+    return super.init(schema.attr, { ...schema.opt, sequelize: conn })
   }
 }

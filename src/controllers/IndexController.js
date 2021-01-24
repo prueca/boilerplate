@@ -6,7 +6,7 @@ export default class IndexController {
    * @param {Object} res
    */
   ping(req, res) {
-    res.json({ status: 200 });
+    res.json({ status: 200 })
   }
 
   /**
@@ -16,6 +16,6 @@ export default class IndexController {
    * @param {Object} res
    */
   index(req, res) {
-    res.render('index');
+    res.render('index')
   }
 }

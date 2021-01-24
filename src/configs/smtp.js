@@ -1,4 +1,4 @@
-import { env } from '../helper';
+import { env } from '../helper'
 
 const config = {
   ethereal: {
@@ -22,6 +22,6 @@ const config = {
       rejectUnauthorized: false,
     },
   },
-};
+}
 
-export default config[env('SMTP', 'ethereal')];
+export default config[env('SMTP', 'ethereal')]
