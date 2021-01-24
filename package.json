@@ -37,7 +37,7 @@
     "nodemailer": "^6.4.10",
     "pug": "^3.0.0",
     "sequelize": "^6.2.3",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
