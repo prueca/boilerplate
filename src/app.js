@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import sassMiddleware from 'node-sass-middleware';
 import cors from 'cors';
+import session from 'express-session';
 import 'dotenv/config';
 
 import io from './io';
@@ -20,6 +21,13 @@ app.use((req, res, next) => {
   res.locals.io = socketio;
   next();
 });
+
+/* session middleware */
+app.use(session({
+  secret: process.env.SESSION_KEY,
+  resave: false,
+  saveUninitialized: false
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
