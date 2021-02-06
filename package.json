@@ -1,7 +1,7 @@
 {
   "name": "boilerplate",
   "version": "1.0.0",
-  "description": "Setup boilerplate for project",
+  "description": "Boilerplate for project development",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --ignore ./src/public -r @babel/register ./src/server.js",
@@ -21,6 +21,7 @@
     "@babel/preset-env": "^7.10.3",
     "@babel/register": "^7.10.3",
     "@babel/runtime": "^7.10.3",
+    "@fortawesome/fontawesome-free": "^5.15.2",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dateformat": "^3.0.3",
