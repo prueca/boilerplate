@@ -17,6 +17,7 @@ const server = http.Server(app)
 const socketio = io(server)
 const isProd = process.env.NODE_ENV === 'production'
 const fontawesome = path.join(__dirname, '../node_modules/@fortawesome/fontawesome-free')
+const jquery = path.join(__dirname, '../node_modules/jquery/dist')
 
 !isProd && app.use(logger('dev'))
 app.use(express.json())
@@ -54,6 +55,7 @@ app.use(sassMiddleware({
 
 app.use('/webfonts', express.static(path.join(fontawesome, 'webfonts')))
 app.use('/fontawesome', express.static(path.join(fontawesome, 'css')))
+app.use('/jquery', express.static(jquery))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', indexRouter)
 
