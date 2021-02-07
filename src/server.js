@@ -1,5 +1,5 @@
 import app from './app'
-import { PORT } from './configs/app'
+import { PORT } from './configs/core'
 
 const server = app.listen(PORT)
 
