@@ -21,7 +21,11 @@ Object.values(models)
   .filter(model => typeof model.associate === 'function')
   .forEach(model => model.associate(models))
 
-config.createTable && Object.values(models)
-  .forEach(model => model.sync({ force: config.forceSync }))
+if (config.createTable || config.alterTable) {
+  Object.values(models).map(model => model.sync({
+    force: config.forceSync,
+    alter: config.alterTable
+  }))
+}
 
 export default sequelize

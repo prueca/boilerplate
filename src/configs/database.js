@@ -9,6 +9,7 @@ export default {
   dialect: env('DB_DIALECT', 'mysql'),
   authenticate: false,
   createTable: false,
+  alterTable: false,
   forceSync: false,
   logging: false
 }
