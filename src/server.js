@@ -1,8 +1,19 @@
 import app from './app'
+import sequelize from './models'
+import db from './configs/database'
 import { PORT } from './configs/core'
 
-const server = app.listen(PORT)
+const init = async () => {
+  if (db.authenticate) {
+    await sequelize.authenticate()
+    console.log('Database connected')
+  }
 
-server.on('listening', () => {
-  console.log(`App running on port ${PORT}...`)
-})
+  const server = app.listen(PORT)
+
+  server.on('listening', () => {
+    console.log(`App running on port ${PORT}...`)
+  })
+}
+
+init()

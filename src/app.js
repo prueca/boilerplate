@@ -10,7 +10,7 @@ import 'dotenv/config'
 
 import io from './io'
 import corsConfig from './configs/cors'
-import indexRouter from './routes/index'
+import main from './routes/main'
 
 const app = express()
 const server = http.Server(app)
@@ -57,7 +57,7 @@ app.use('/webfonts', express.static(path.join(fontawesome, 'webfonts')))
 app.use('/fontawesome', express.static(path.join(fontawesome, 'css')))
 app.use('/jquery', express.static(jquery))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/', indexRouter)
+app.use('/', main)
 
 // catch 404 and forward to error handler
 app.use((req, res) => res.json({ error: 'Page not found' }))
