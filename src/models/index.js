@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize'
 import config from '../configs/database'
-import schema from './schema'
+import definition from './definition'
 
 const sequelize = new Sequelize(
   config.database,
