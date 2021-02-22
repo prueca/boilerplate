@@ -1,4 +1,3 @@
-import http from 'http'
 import express from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
@@ -8,28 +7,20 @@ import cors from 'cors'
 import session from 'express-session'
 import 'dotenv/config'
 
-import io from './io'
 import corsConfig from './configs/cors'
 import main from './routes/main'
 
 const app = express()
-const server = http.Server(app)
-const socketio = io(server)
 const isProd = process.env.NODE_ENV === 'production'
 const fontawesome = path.join(__dirname, '../node_modules/@fortawesome/fontawesome-free')
 const jquery = path.join(__dirname, '../node_modules/jquery/dist')
+const ioClient = path.join(__dirname, '../node_modules/socket.io/client-dist')
 
 !isProd && app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(cors(corsConfig))
-
-// make socket io accessible to controllers
-app.use((req, res, next) => {
-  res.locals.io = socketio
-  next()
-})
 
 // session middleware
 app.use(session({
@@ -53,10 +44,14 @@ app.use(sassMiddleware({
   debug: false,
 }))
 
+// static
 app.use('/webfonts', express.static(path.join(fontawesome, 'webfonts')))
 app.use('/fontawesome', express.static(path.join(fontawesome, 'css')))
 app.use('/jquery', express.static(jquery))
+app.use('/socket.io', express.static(ioClient))
 app.use(express.static(path.join(__dirname, 'public')))
+
+// routes
 app.use('/', main)
 
 // catch 404 and forward to error handler

@@ -1,6 +1,7 @@
 import app from './app'
 import sequelize from './models'
 import db from './configs/database'
+import io from './io'
 import { PORT } from './configs/core'
 
 const init = async () => {
@@ -10,10 +11,11 @@ const init = async () => {
   }
 
   const server = app.listen(PORT)
+  const socketio = io(server)
+  const succMsg = `App running on port ${PORT}...`
 
-  server.on('listening', () => {
-    console.log(`App running on port ${PORT}...`)
-  })
+  app.locals.io = socketio
+  server.on('listening', () => console.log(succMsg))
 }
 
 init()
