@@ -1,3 +1,5 @@
+import session from './session.defn'
+
 export default {
-  // add schema here
+  session
 }

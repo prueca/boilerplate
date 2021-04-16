@@ -9,9 +9,6 @@ export default (req, res, next) => {
       const statusCode = code || StatusCodes.INTERNAL_SERVER_ERROR
       const error = message || getReasonPhrase(statusCode)
       this.status(statusCode).json({ error })
-    },
-    errorPage(status, error) {
-      this.status(status).render('error', { error })
     }
   })
 

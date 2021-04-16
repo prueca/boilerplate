@@ -7,52 +7,33 @@ import cors from 'cors'
 import session from 'express-session'
 import 'dotenv/config'
 
+import bootstrap from './bootstrap'
 import corsConfig from './configs/cors'
+import sassConfig from './configs/sass'
+import sessConfig from './configs/session'
 import response from './middleware/response'
 import main from './routes/main'
 
 const app = express()
 const isProd = process.env.NODE_ENV === 'production'
-const fontawesome = path.join(__dirname, '../node_modules/@fortawesome/fontawesome-free')
-const jquery = path.join(__dirname, '../node_modules/jquery/dist')
-const ioClient = path.join(__dirname, '../node_modules/socket.io/client-dist')
 
+// middleware
 !isProd && app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(cors(corsConfig))
-
-// session middleware
-app.use(session({
-  secret: process.env.SESSION_KEY,
-  resave: false,
-  saveUninitialized: false
-}))
+app.use(session(sessConfig))
+app.use(sassMiddleware(sassConfig))
+app.use(response)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 app.locals.env = process.env // access env in views
 
-// sass compiler
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'sass'),
-  dest: path.join(__dirname, 'public/css'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  outputStyle: 'expanded', // compressed, nested, compact
-  prefix: '/css',
-  debug: false,
-}))
-
-// response middleware
-app.use(response)
-
 // static
-app.use('/webfonts', express.static(path.join(fontawesome, 'webfonts')))
-app.use('/fontawesome', express.static(path.join(fontawesome, 'css')))
-app.use('/jquery', express.static(jquery))
-app.use('/socket.io', express.static(ioClient))
+bootstrap(app)
 app.use(express.static(path.join(__dirname, 'public')))
 
 // routes

@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize'
 import config from '../configs/database'
-import definition from './definition'
+import defn from './definition'
+import Session from './Session'
 
 const sequelize = new Sequelize(
   config.database,
@@ -14,7 +15,7 @@ const sequelize = new Sequelize(
 )
 
 const models = {
-  // initialize models here
+  Session: Session.init(sequelize, defn.session)
 }
 
 Object.values(models)
