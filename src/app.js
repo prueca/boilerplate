@@ -8,6 +8,7 @@ import session from 'express-session'
 import 'dotenv/config'
 
 import corsConfig from './configs/cors'
+import response from './middleware/response'
 import main from './routes/main'
 
 const app = express()
@@ -43,6 +44,9 @@ app.use(sassMiddleware({
   prefix: '/css',
   debug: false,
 }))
+
+// response middleware
+app.use(response)
 
 // static
 app.use('/webfonts', express.static(path.join(fontawesome, 'webfonts')))

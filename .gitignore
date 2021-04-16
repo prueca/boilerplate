@@ -61,7 +61,8 @@ typings/
 .next
 
 # Others
-dist/
 .vscode
-src/public/css/*.css
-src/logs/*.log
+/dist
+/src/public/css/*.css
+/src/logs/*.log
+/storage
